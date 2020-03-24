@@ -152,3 +152,45 @@ function fatorial_ex2(n){
 /*-----------------------------------------------------------------*/
 
 //Exercício 3
+
+//Identificando os elementos do exercício
+var input_num_ex3 = document.getElementById("input_num_ex3");
+var btn_adicionar_ex3 = document.getElementById("btn_adicionar_ex3");
+var btn_finalizar_ex3 = document.getElementById("btn_finalizar_ex3");
+var resultado_ex3 = document.getElementById("resultado_ex3");
+var valores_ex3 = []; //Vetor usado para armazenar os valores
+
+btn_finalizar_ex3.disabled = true; //Desabilitando o botão de finalização para evitar erros
+btn_adicionar_ex3.addEventListener("click", adicionar_ex3); //Adicionando listener para o botão de adicionar
+btn_finalizar_ex3.addEventListener("click", finalizar_ex3); //Adicionando listener para o botão de finalizar
+
+//Função que adiciona valores ao array
+function adicionar_ex3(){
+    if(input_num_ex3.value == "" || input_num_ex3.value < 0){
+        alert("Por favor, digite um valor válido.");
+    }else if(valores_ex3.length < 5){
+        valores_ex3.push(Number(input_num_ex3.value));
+        
+        if(valores_ex3.length == 5){
+            btn_finalizar_ex3.disabled = false;
+        }
+
+        resultado_ex3.innerHTML = `<br>Número ${input_num_ex3.value} adicionado`;
+
+        input_num_ex3.value = "";
+        input_num_ex3.focus();
+        
+    }else{
+        alert("Já foram digitados 5 números, agora clique em \"Finalizar\"");
+    }
+}
+
+//Função que mostra a raiz quadrada na tela
+function finalizar_ex3() {
+    //Utilizando da função map, que irá realizar a função passada por parâmetro em todos os elementos do array
+    var raiz_valores_ex3 = valores_ex3.map(function(n){
+        return (n ** (1/2));
+    })
+
+    resultado_ex3.innerHTML = `<br>Resultado: ${raiz_valores_ex3}`; //Colocando o resultado em tela
+}
