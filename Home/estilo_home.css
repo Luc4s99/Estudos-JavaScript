@@ -50,3 +50,7 @@ hr {
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+hr#hr_final{
+    margin-bottom: 70px;
+}

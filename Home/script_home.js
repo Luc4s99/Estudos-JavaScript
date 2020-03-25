@@ -169,10 +169,10 @@ function adicionar_ex3(){
     if(input_num_ex3.value == "" || input_num_ex3.value < 0){
         alert("Por favor, digite um valor válido.");
     }else if(valores_ex3.length < 5){
-        valores_ex3.push(Number(input_num_ex3.value));
+        valores_ex3.push(Number(input_num_ex3.value)); //Adiciona os números no array já os convertendo para number
         
-        if(valores_ex3.length == 5){
-            btn_finalizar_ex3.disabled = false;
+        if(valores_ex3.length == 5){ //Caso já tenham sido digitados 5 valores
+            btn_finalizar_ex3.disabled = false; //Habilita o botão para finalizar
         }
 
         resultado_ex3.innerHTML = `<br>Número ${input_num_ex3.value} adicionado`;
@@ -189,8 +189,59 @@ function adicionar_ex3(){
 function finalizar_ex3() {
     //Utilizando da função map, que irá realizar a função passada por parâmetro em todos os elementos do array
     var raiz_valores_ex3 = valores_ex3.map(function(n){
-        return (n ** (1/2));
+        var num_aux_ex3 = (n ** (1/2));
+        return (num_aux_ex3.toFixed(2)); //Retorna o resultado com duas casas decimais
     })
 
+    /*Utilizando arrow functions
+    
+    var raiz_valores_ex3 = valores_ex3.map(n => (n ** (1/2)))
+
+    */
+
     resultado_ex3.innerHTML = `<br>Resultado: ${raiz_valores_ex3}`; //Colocando o resultado em tela
+}
+
+/*-----------------------------------------------------------------*/
+
+//Exercício 4
+
+
+//Identificando os elementos do exercício
+var input_nome_ex4 = document.getElementById("input_nome_ex4");
+var input_num_ex4 = document.getElementById("input_num_ex4");
+var resultado_ex4 = document.getElementById("resultado_ex4");
+var btn_verificar_ex4 = document.getElementById("btn_verificar_ex4").addEventListener("click", verificar_ex4); //Adicionando um listener para o click do botão;
+var btn_limpar_ex4 = document.getElementById("btn_limpar_ex4").addEventListener("click", limpar_ex4);
+
+function verificar_ex4(){
+    resultado_ex4.innerHTML = "";
+    
+    if(input_num_ex4.value == "" || input_nome_ex4.value == ""){
+        alert("Por favor preencha todos os campos.");
+    }else if(input_num_ex4.value < 0){
+        alert("Por favor digite uma idade válida");
+    }else{
+        //Separando o primeiro nome digitado
+        if(input_nome_ex4.value.indexOf(" ") == -1){
+            resultado_ex4.innerHTML = `<br>Olá, ${input_nome_ex4.value}!`;
+        }else{
+            resultado_ex4.innerHTML = `<br>Olá, ${input_nome_ex4.value.substring(0, input_nome_ex4.value.indexOf(" "))}!`;
+        }
+
+        //Verificando a idade
+        if(input_num_ex4.value < 18){
+            resultado_ex4.innerHTML += " Você é menor de idade.";
+        }else{
+            resultado_ex4.innerHTML += " Você é maior de idade";
+        }
+    }
+    
+}
+
+//Função que limpa os campos do formulario
+function limpar_ex4(){
+    resultado_ex4.innerHTML = "";
+    input_num_ex4.value = "";
+    input_nome_ex4.value = "";
 }
