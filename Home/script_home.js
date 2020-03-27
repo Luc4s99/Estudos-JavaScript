@@ -22,11 +22,11 @@ var saudacao = document.getElementById("saudacao"); //Identifica o elemento que 
 
 //Verificando qual saudação deve ser dada de acordo com a hora do dia
 if(hora > 0 && hora < 12) {
-    saudacao.innerHTML = `<b>Bom dia!</b>`
+    saudacao.innerHTML = `<b>Bom dia!</b>`;
 }else if(hora >= 12 && hora < 18) {
-    saudacao.innerHTML = `<b>Boa tarde!</b>`
+    saudacao.innerHTML = `<b>Boa tarde!</b>`;
 }else{
-    saudacao.innerHTML = `<b>Boa noite!</b>`
+    saudacao.innerHTML = `<b>Boa noite!</b>`;
 }
 
 /*-----------------------------------------------------------------*/
@@ -244,4 +244,42 @@ function limpar_ex4(){
     resultado_ex4.innerHTML = "";
     input_num_ex4.value = "";
     input_nome_ex4.value = "";
+}
+
+/*-----------------------------------------------------------------*/
+
+//Exercício 5
+
+//Identificando os elementos por meio do query selector
+var msg_ex5 = document.querySelector("h3#msg_ex5");
+var foto_ex5 = document.querySelector("img#foto_ex5");
+var hora_ex5 = document.querySelector("select#hora_ex5");
+
+msg_ex5.innerHTML = saudacao.innerHTML; //Setando o valor inicial da saudação, que já foi verificada anteriormente
+hora_ex5.addEventListener("change", verificar_ex5); //Adiciona um listener para o usuário mudar a opção selecionada
+
+//Setando a foto a ser carregada inicialmente de acordo com o horário
+if(hora > 0 && hora < 12) {
+    foto_ex5.src = "../Images/fotomanha.png";
+    hora_ex5.value = "manha";
+}else if(hora >= 12 && hora < 18) {
+    foto_ex5.src = "../Images/fototarde.png";
+    hora_ex5.value = "tarde";
+}else{
+    foto_ex5.src = "../Images/fotonoite.png";
+    hora_ex5.value = "noite";
+}
+
+//Verifica qual opção foi selecionada
+function verificar_ex5(){
+    if(hora_ex5.value == "manha") { //Se for manhã, seta os valores de acordo
+        msg_ex5.innerHTML = "Bom Dia!";
+        foto_ex5.src = "../Images/fotomanha.png";
+    }else if(hora_ex5.value == "tarde") { //Se for tarde, seta os valores de acordo
+        msg_ex5.innerHTML = "Boa Tarde!";
+        foto_ex5.src = "../Images/fototarde.png";
+    }else{ //Se for noite, seta os valores de acordo
+        msg_ex5.innerHTML = "Boa Noite!";
+        foto_ex5.src = "../Images/fotonoite.png";
+    }
 }
