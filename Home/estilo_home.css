@@ -54,3 +54,22 @@ hr {
 hr#hr_final{
     margin-bottom: 70px;
 }
+
+
+.grupo:after {
+    content: "";
+    display: table;
+} 
+.grupo:after {
+    clear: both;
+}
+.grupo {
+     zoom: 1; /* For IE 6/7 (trigger hasLayout) */
+}
+
+div#prod_ex6{
+    position:relative;
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}

@@ -283,3 +283,67 @@ function verificar_ex5(){
         foto_ex5.src = "../Images/fotonoite.png";
     }
 }
+
+/*-----------------------------------------------------------------*/
+
+//Exercício 6
+
+//Identificando os elementos do exercício
+var check_1_ex6 = document.getElementById("check_1_ex6");
+var check_2_ex6 = document.getElementById("check_2_ex6");
+var check_3_ex6 = document.getElementById("check_3_ex6");
+var check_4_ex6 = document.getElementById("check_4_ex6");
+var btn_finalizar_ex6 = document.getElementById("btn_finalizar_ex6").addEventListener("click", verificar_ex6);
+var resultado_ex6 = document.getElementById("resultado_ex6");
+var valores_ex6 = [];
+
+check_1_ex6.addEventListener("change", function(){adicionar(check_1_ex6.checked, check_1_ex6.value)});
+check_2_ex6.addEventListener("change", function(){adicionar(check_2_ex6.checked, check_2_ex6.value)});
+check_3_ex6.addEventListener("change", function(){adicionar(check_3_ex6.checked, check_3_ex6.value)});
+check_4_ex6.addEventListener("change", function(){adicionar(check_4_ex6.checked, check_4_ex6.value)});
+
+function verificar_ex6(){   
+   //Calculando o valor total
+    resultado_ex6.innerHTML = `<br>Valor total: R$${ valores_ex6.reduce(somar_ex6).toFixed(2)}`;
+
+    //Verificando quantos valores são maiores que 170
+    resultado_ex6.innerHTML += `<br>Quantidade de produtos com preço maior que R$170,00: ${valores_ex6.filter(valor_maior170_ex6).length}`;
+
+    //Verificando se existe algum valor maior que 300
+    resultado_ex6.innerHTML += `<br>Existe algum valor que ultrapassa R$300,00?: ${valores_ex6.some(maior_300_ex6) ? "Sim": "Não"}` //Usando o operador ternário(?)
+
+    //Verificando se todos os valores são maiores que 200
+    resultado_ex6.innerHTML += `<br>Todos os valores são maiores que R$200,00?: ${valores_ex6.every(todos_maior200_ex6) ? "Sim": "Não"}`; //Usando o operador ternário(?)
+}
+
+//Função que adiciona valores ao array a ser analisado
+function adicionar(estado, valor){
+    valor = Number(valor); //Converte o valor para número inicialmente
+    
+    //Se a checkbox estiver ativada, o valor será inserido
+    if(estado){
+        valores_ex6.push(valor);
+    }else{ //Senão o valor deve ser retirado
+        valores_ex6.splice(valores_ex6.indexOf(valor), 1); //Usada a função splice para não haver risco de deixar "buracos" no array
+    }
+}
+
+//Função usada por reduce() para calcular o valor total
+function somar_ex6(total, valor){
+    return total + valor;
+}
+
+//Função usada por filter() para verificar de existe valor maior que 170
+function valor_maior170_ex6(valor){
+    return valor > 170;
+}
+
+//Função usada por some() para verificar se existe pelo menos um valor maior que 300
+function maior_300_ex6(valor){
+    return valor > 300;
+}
+
+//Função usada por every() para verificar se todos os valores são maiores que 200
+function todos_maior200_ex6(valor){
+    return valor > 200;
+}
