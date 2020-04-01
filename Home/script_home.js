@@ -347,3 +347,31 @@ function maior_300_ex6(valor){
 function todos_maior200_ex6(valor){
     return valor > 200;
 }
+
+/*-----------------------------------------------------------------*/
+
+//Exercício 7
+
+//Utilizando jQuery para controlar os eventos
+
+$(document).ready(function(){ //Verifica se a página está pronta
+    
+    $("#btn_foto1_ex7").click(function(){ //Função que executa ao clicar no elemento com id "btn_foto1_ex7"
+        $("#slide_ex7").fadeOut(1000) //Faz com que a imagem desapareça suavemente em 1.5s
+        .attr("src", "../Images/sf1.jpg") //Muda o src da imagem
+        .fadeIn(1000); //Faz com que a imagem apareça suavemente em 1.5s
+    });
+
+    $("#btn_foto2_ex7").click(function(){ //Função que executa ao clicar no elemento com id "btn_foto2_ex7"
+        $("#slide_ex7").fadeOut(1000)
+        .attr("src", "../Images/sf2.jpg")
+        .fadeIn(1000);
+    });
+
+    $("#btn_foto3_ex7").click(function(){ //Função que executa ao clicar no elemento com id "btn_foto3_ex7"
+        $("#slide_ex7").fadeOut(1000)
+        .attr("src", "../Images/sf3.jpg")
+        .fadeIn(1000);
+    });
+
+});
