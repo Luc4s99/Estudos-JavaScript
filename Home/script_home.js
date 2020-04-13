@@ -375,3 +375,40 @@ $(document).ready(function(){ //Verifica se a página está pronta
     });
 
 });
+
+/*-----------------------------------------------------------------*/
+
+//Exercício 8
+
+//Identificando os elementos da página
+var date_ex8 = document.getElementById("date_ex8");
+var btn_verificar_ex8 = document.getElementById("btn_verificar_ex8").addEventListener("click", verificar_ex8);
+var resultado_ex8 = document.getElementById("resultado_ex8");
+var data_base_ex8 = Date.now();//Obtendo a data no momento, já convertida em número de milisegundos
+//Variáveis para o cálculo de diferença de dias
+var diferenca_ex8 = 0;
+var dias_diferenca_ex8 = 0;
+
+function verificar_ex8(){
+    var data1_ex8 = new Date(date_ex8.value);//Representando a data colocada pelo usuário
+    data1_ex8 = data1_ex8.getTime();//Convertendo em milisegundos
+
+    if(data1_ex8 < data_base_ex8){//Caso a data inserida seja menor, então ela já passou
+        //Já passou
+        diferenca_ex8 = Math.abs(data_base_ex8 - data1_ex8);//Calcula a diferença entre as datas e arredonda
+        dias_diferenca_ex8 = Math.ceil(diferenca_ex8 / (1000 * 60 * 60 * 24));//Divide a diferença pelo número de milisegundos de um dia
+
+        resultado_ex8.innerHTML = `<br>Já fazem ${dias_diferenca_ex8 - 1} dias que esta data passou.`;
+
+    }else if(data1_ex8 > data_base_ex8){//Caso a data inserida seja maior, ela ainda não passou
+        //Nao passou
+        diferenca_ex8 = Math.abs(data1_ex8 - data_base_ex8);
+        dias_diferenca_ex8 = Math.ceil(diferenca_ex8 / (1000 * 60 * 60 * 24));
+
+        resultado_ex8.innerHTML = `<br>Faltam ${dias_diferenca_ex8} dias para que esta data chegue.`;
+
+    }else{//Caso as datas sejam iguais
+        resultado_ex8.innerHTML = "<br>As data coicidem.";
+    }
+    
+}
