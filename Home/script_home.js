@@ -412,3 +412,27 @@ function verificar_ex8(){
     }
     
 }
+
+/*-----------------------------------------------------------------*/
+
+//Exercício 9
+
+//Identificando os elementos da página
+var btn_verificar_ex9 = document.getElementById("btn_verificar_ex9").addEventListener("click", verificar_ex9);
+var input_ex9 = document.getElementById("input_ex9");
+var resultado_ex9 = document.getElementById("resultado_ex9");
+
+function verificar_ex9(){
+    //Tenta executar o seguinte bloco de comandos
+    try {
+        if(isNaN(input_ex9.value)){//Verifica se o valor digitado é um número
+            throw "Valor digitado não é um número.";//Lança o erro do valor não ser um número
+        }else if(input_ex9.value == ""){//Verifica se algo foi digitado
+            throw "Nenhum valor digitado.";//Lança o erro de valor vazio
+        }else{//Caso tudo esteja correto, o valor é exibido na tela
+            resultado_ex9.innerHTML = `<br>Valor digitado: ${input_ex9.value}`;
+        }
+    }catch(erro){//Se algum erro for lançado, cairá aqui e exibirá a mensagem de erro
+        resultado_ex9.innerHTML = `<br>ERRO IDENTIFICADO: ${erro}`;
+    }
+}
