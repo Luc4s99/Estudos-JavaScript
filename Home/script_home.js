@@ -436,3 +436,38 @@ function verificar_ex9(){
         resultado_ex9.innerHTML = `<br>ERRO IDENTIFICADO: ${erro}`;
     }
 }
+
+/*-----------------------------------------------------------------*/
+
+//Exercício 10
+
+//Seleciona todos os parágrafos
+var paragrafos = document.querySelectorAll("p");
+var btn_ex10 = document.querySelector("input#btn_mudar_ex10");
+var btn_resetar_ex10 = document.querySelector("input#btn_resetar_ex10");
+
+//Reseta a cor para a padrão
+btn_resetar_ex10.addEventListener("click", function(){
+    //Itera sobre os paragrafos da página
+    for(paragrafo of paragrafos){
+        paragrafo.style.backgroundColor = null;
+    }
+});
+
+//Muda a cor de fundo dos parágrafos
+btn_ex10.addEventListener("click", function(){
+    var cor1 = numeroAleatorio(0, 256);//Primeira cor do rgb
+    var cor2 = numeroAleatorio(0, 256);//Segunda cor do rgb
+    var cor3 = numeroAleatorio(0, 256);//Terceira cor do rgb
+
+    //Itera sobre os paragrafos da página
+    for(paragrafo of paragrafos){
+        //Altera a cor por meio do rgb
+        paragrafo.style.backgroundColor = `rgb(${cor1}, ${cor2}, ${cor3})`;
+    }
+});
+
+//Gera um número aleatório entre o intervalo passado, max não incluso
+function numeroAleatorio(min, max) {
+    return Math.floor(Math.random() * (max - min) ) + min;
+}
